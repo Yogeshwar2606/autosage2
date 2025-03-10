@@ -4,13 +4,13 @@ require("dotenv").config();
 
 const router = express.Router();
 
-// ✅ Set up Gemini API URL and Key
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // Store API key in .env file
 
-// 📌 Chatbot API Endpoint
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+const GEMINI_API_KEY = process.env.GEMINI_API_KE
+
+
 router.post("/chatbot", async (req, res) => {
-  const { message } = req.body; // Get user query from request body
+  const { message } = req.body; 
 
   if (!message) {
     return res.status(400).json({ error: "Message is required" });

@@ -16,7 +16,7 @@ const BankLoans = () => {
   const [totalPayment, setTotalPayment] = useState(null);
   const [totalInterest, setTotalInterest] = useState(null);
 
-  // 📌 EMI Calculation Function
+ 
   const calculateEMI = (amount, rate, months) => {
     const monthlyRate = rate / (12 * 100);
     return ((amount * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1)).toFixed(2);
@@ -63,7 +63,7 @@ const BankLoans = () => {
         </Form.Group>
       </Card>
 
-      {/* 📌 Bank Loan Offers Table */}
+      
       <Card className="p-4 shadow-lg">
         <Table striped bordered hover responsive>
           <thead>
@@ -91,7 +91,7 @@ const BankLoans = () => {
         </Table>
       </Card>
 
-      {/* 📌 EMI Display Section */}
+      
       {selectedBank && emi && (
         <Card className="mt-4 p-3 text-center bg-success text-white">
           <h4>✅ Estimated EMI for {selectedBank.bank}: ₹{emi} per month</h4>

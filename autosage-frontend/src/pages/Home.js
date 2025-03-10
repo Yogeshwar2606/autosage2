@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Car } from "lucide-react";
 
 function Home() {
   const [featuredVehicles, setFeaturedVehicles] = useState([]);
@@ -18,13 +19,18 @@ function Home() {
   }, []);
 
   return (
-    <Container>
+    <Container
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgba(0,212,255,1) 100%)",
+      }}
+    >
       <h1>
-  <span role="img" aria-label="car">
-    🚗
-  </span>{" "}
-  Welcome to AutoSage
-</h1>
+        <span role="img" aria-label="car">
+          <Car style={{ width: "40px", height: "70px", marginBottom: "5px" }} />
+        </span>{" "}
+        Welcome to AutoSage
+      </h1>
       <p className="text-center">Find and compare the best vehicles.</p>
 
       {/* Display Featured Vehicles */}
@@ -33,7 +39,12 @@ function Home() {
         {featuredVehicles.map((vehicle) => (
           <Col key={vehicle._id} md={4} className="mb-4">
             <Card className="shadow-lg rounded">
-              <Card.Img variant="top" src={vehicle.imageUrl} alt={vehicle.name} className="vehicle-img" />
+              <Card.Img
+                variant="top"
+                src={vehicle.imageUrl}
+                alt={vehicle.name}
+                className="vehicle-img"
+              />
               <Card.Body>
                 <Card.Title className="text-center">{vehicle.name}</Card.Title>
                 <Card.Text className="text-center">
@@ -51,7 +62,6 @@ function Home() {
           </Col>
         ))}
       </Row>
-
       <div className="text-center mt-4">
         <Link to="/vehicles">
           <Button variant="success">Browse All Vehicles</Button>

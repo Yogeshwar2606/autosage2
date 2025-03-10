@@ -10,7 +10,7 @@ const VehicleRecommendation = () => {
   const [features, setFeatures] = useState([]);
   const [recommendedVehicles, setRecommendedVehicles] = useState([]);
 
-  // 📌 Fetch all vehicles from API
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/vehicles")
@@ -18,7 +18,7 @@ const VehicleRecommendation = () => {
       .catch((error) => console.error("Error fetching vehicles:", error));
   }, []);
 
-  // 📌 Function to recommend vehicles based on user input
+  
   const recommendVehicles = () => {
     if (!budget) {
       alert("Please enter your budget!");
@@ -41,10 +41,10 @@ const VehicleRecommendation = () => {
       );
     }
 
-    // 📌 Sort by price (closest to budget)
+   
     filteredVehicles.sort((a, b) => Math.abs(a.price - budget) - Math.abs(b.price - budget));
 
-    // 📌 Select top 5 vehicles
+    
     setRecommendedVehicles(filteredVehicles.slice(0, 5));
   };
 

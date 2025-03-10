@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Button, ListGroup, Container, Card } from "react-bootstrap";
+import { NotebookPen } from "lucide-react";
 
 const Reviews = ({ vehicleId }) => {
   const [reviews, setReviews] = useState([]);
@@ -8,14 +9,13 @@ const Reviews = ({ vehicleId }) => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ✅ Fetch Reviews
+  
   useEffect(() => {
     axios.get(`http://localhost:5000/api/reviews/${vehicleId}`)
       .then((res) => setReviews(res.data))
       .catch((error) => console.error("Error fetching reviews:", error));
   }, [vehicleId]);
 
-  // ✅ Submit Review
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!comment.trim()) return alert("Please enter a comment!");
@@ -36,7 +36,7 @@ const Reviews = ({ vehicleId }) => {
 
   return (
     <Container>
-      <h4 className="mt-4">📝 User Reviews</h4>
+      <h4 className="mt-4"><NotebookPen /> User Reviews</h4>
 
       {/* Review Form */}
       <Card className="p-3 mb-3 shadow">
@@ -85,4 +85,4 @@ const Reviews = ({ vehicleId }) => {
   );
 };
 
-export default Reviews;
+export default Reviews;

@@ -12,7 +12,7 @@ function VehicleList({ selectedVehicles, setSelectedVehicles }) {
   const [maxPrice, setMaxPrice] = useState("");
   const [sortBy, setSortBy] = useState("");
 
-  const navigate = useNavigate(); // ✅ Navigation hook
+  const navigate = useNavigate(); 
 
   const fetchVehicles = useCallback(async () => {
     try {
@@ -151,7 +151,7 @@ function VehicleList({ selectedVehicles, setSelectedVehicles }) {
         )}
       </Row>
 
-      {/* ✅ Compare Button */}
+      
       {selectedVehicles.length > 1 && (
         <div className="text-center mt-4">
           <Button variant="success" onClick={() => navigate("/compare")}>

@@ -13,14 +13,13 @@ const ResaleValueEstimator = () => {
   const [resaleValue, setResaleValue] = useState(null);
   const [chartData, setChartData] = useState(null);
 
-  // 📌 Depreciation rates for different vehicles
   const DEPRECIATION_RATES = {
     Car: 0.15,
     Bike: 0.18,
     Scooter: 0.20,
   };
 
-  // 📌 Condition adjustment factors
+
   const CONDITION_ADJUSTMENT = {
     Excellent: 1.05,
     Good: 1.0,
@@ -37,11 +36,11 @@ const ResaleValueEstimator = () => {
     const depreciationRate = DEPRECIATION_RATES[vehicleType];
     const conditionFactor = CONDITION_ADJUSTMENT[condition];
 
-    // 📌 Formula to calculate resale value
+   
     const value = originalPrice * Math.pow(1 - depreciationRate, age) * conditionFactor;
     setResaleValue(value.toFixed(2));
 
-    // 📌 Generate chart data (Depreciation over 10 years)
+  
     const years = Array.from({ length: 11 }, (_, i) => i);
     const values = years.map((y) => originalPrice * Math.pow(1 - depreciationRate, y));
 

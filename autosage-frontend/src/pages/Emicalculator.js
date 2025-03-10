@@ -83,11 +83,14 @@ const EMICalculator = () => {
       </Card>
 
       {chartData && (
-        <div className="mt-4">
-          <h5>📊 Loan Breakdown</h5>
-          <Pie data={chartData} />
+        <div className="mt-4 d-flex flex-column align-items-center">
+          <h5 className="text-center">📊 Loan Breakdown</h5>
+           <div style={{ width: "500px", height: "500px" }}>
+              <Pie data={chartData} options={{ maintainAspectRatio: false }} />
+            </div>
         </div>
-      )}
+)}
+
     </Container>
   );
 };

@@ -3,9 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import Reviews from "../components/Reviews"; 
+import { ChartNoAxesCombined, HandCoins } from "lucide-react";
 
 function VehicleDetails() {
-  const { id } = useParams(); // Get ID from URL
+  const { id } = useParams(); 
   const [vehicle, setVehicle] = useState(null);
   const [error, setError] = useState("");
 
@@ -39,7 +40,10 @@ function VehicleDetails() {
   }
 
   return (
-    <Container className="mt-5">
+    <Container style={{
+      background: "rgb(2,0,36)",
+background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgba(0,212,255,1) 100%)"
+    }} className="mt-5">
       <Row>
         <Col md={6}>
           <Card.Img variant="top" src={vehicle.imageUrl} alt={vehicle.name} className="img-fluid rounded" />
@@ -58,10 +62,10 @@ function VehicleDetails() {
 
           {/* ✅ EMI Calculator Button */}
           <Link to={`/emi-calculator?price=${vehicle.price}`}>
-              <Button variant="success" className="mt-3 me-2">💰 Calculate EMI</Button>
+              <Button variant="success" className="mt-3 me-2"><HandCoins /> Calculate EMI</Button>
           </Link>
           <Link to="/resale-estimator">
-            <Button variant="warning" className="mt-3">📉 Check Resale Value</Button>
+            <Button variant="warning" className="mt-3"><ChartNoAxesCombined /> Check Resale Value</Button>
           </Link>
         </Col>
       </Row>

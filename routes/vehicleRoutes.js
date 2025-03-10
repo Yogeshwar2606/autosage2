@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   try {
     const { search, type, fuelType, minPrice, maxPrice } = req.query;
 
-    // Build query object dynamically based on filters
+    
     let query = {};
 
     if (search) {
