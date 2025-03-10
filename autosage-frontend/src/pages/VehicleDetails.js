@@ -2,17 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
-import Reviews from "../components/Reviews"; 
-import { ChartNoAxesCombined, HandCoins } from "lucide-react";
+import Reviews from "../components/Reviews";
 
 function VehicleDetails() {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [vehicle, setVehicle] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log("Fetching vehicle with ID:", id);
-
     if (!id || id.length !== 24) {
       setError("Invalid vehicle ID");
       return;
@@ -39,11 +36,48 @@ function VehicleDetails() {
     return <h2 className="text-center mt-4">Loading...</h2>;
   }
 
+  
+  const shareOnWhatsApp = () => {
+    const message = `🚗 Check out this vehicle on AutoSage! 🚀
+    
+    *Name:* ${vehicle.name}
+    *Brand:* ${vehicle.brand}
+    *Price:* ₹${vehicle.price}
+    *Fuel Type:* ${vehicle.fuelType}
+    *Mileage:* ${vehicle.mileage} kmpl
+    *Engine:* ${vehicle.engine}
+  
+    🔗 View More: http://localhost:3000/vehicles/${vehicle._id}
+  
+    🖼️ Vehicle Image: ${vehicle.imageUrl}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://api.whatsapp.com/send?text=${encodedMessage}`, "_blank");
+  };
+
+  
+  const shareViaGmail = () => {
+    if (!vehicle) return; 
+
+    const subject = `🚗 Check out this vehicle: ${vehicle.name}`;
+    const body = `Hey, I found this awesome vehicle on AutoSage! 🚀\n\n
+    Name: ${vehicle.name}\n
+    Brand: ${vehicle.brand}\n
+    Price: ₹${vehicle.price}\n
+    Fuel Type: ${vehicle.fuelType}\n
+    Mileage: ${vehicle.mileage} kmpl\n
+    Engine: ${vehicle.engine}\n\n
+    🔗 View More: http://localhost:3000/vehicles/${vehicle._id}\n\n
+    🖼️ Vehicle Image: ${vehicle.imageUrl}`;
+
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailLink, "_blank");
+  };
+
+
+
   return (
-    <Container style={{
-      background: "rgb(2,0,36)",
-background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgba(0,212,255,1) 100%)"
-    }} className="mt-5">
+    <Container className="mt-5">
       <Row>
         <Col md={6}>
           <Card.Img variant="top" src={vehicle.imageUrl} alt={vehicle.name} className="img-fluid rounded" />
@@ -60,18 +94,27 @@ background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgb
           <p><strong>Features:</strong> {vehicle.features.join(", ")}</p>
           <p><strong>Launch Year:</strong> {vehicle.launchYear}</p>
 
-          
           <Link to={`/emi-calculator?price=${vehicle.price}`}>
-              <Button variant="success" className="mt-3 me-2"><HandCoins /> Calculate EMI</Button>
+            <Button variant="success" className="mt-3">💰 Calculate EMI</Button>
           </Link>
           <Link to="/resale-estimator">
-            <Button variant="warning" className="mt-3"><ChartNoAxesCombined /> Check Resale Value</Button>
+            <Button variant="warning" className="mt-3">📉 Check Resale Value</Button>
           </Link>
+
+          
+          <div className="mt-3">
+            <Button variant="success" className="me-2" onClick={shareOnWhatsApp}>
+              📲 Share on WhatsApp
+            </Button>
+            <Button variant="primary" onClick={shareViaGmail}>
+              📧 Share via Email
+            </Button>
+
+          </div>
+
         </Col>
       </Row>
-
-      
-      <Reviews vehicleId={id} />  
+      <Reviews vehicleId={id}></Reviews>
     </Container>
   );
 }
