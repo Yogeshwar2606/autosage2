@@ -50,7 +50,7 @@ const BankLoans = () => {
     <Container className="mt-5">
       <h2 className="mb-4 text-center">🏦 Bank Loan Offers</h2>
 
-      {/* 📌 User Input for Loan Amount and Tenure */}
+     
       <Card className="p-4 shadow-lg mb-4">
         <Form.Group className="mb-3">
           <Form.Label>Enter Loan Amount (₹)</Form.Label>

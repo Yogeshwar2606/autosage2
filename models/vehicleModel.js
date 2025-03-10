@@ -6,7 +6,7 @@ const vehicleSchema = new mongoose.Schema({
   type: { type: String, enum: ["Car", "Bike","Scooter"], required: true },
   price: { type: Number, required: true },
   fuelType: { type: String, enum: ["Petrol", "Diesel", "Electric", "Hybrid"], required: true },
-  mileage: { type: Number }, // km/l or range for electric vehicles
+  mileage: { type: Number }, 
   engine: { type: String },
   transmission: { type: String, enum: ["Manual", "Automatic"] },
   features: [{ type: String }],

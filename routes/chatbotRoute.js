@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const router = express.Router();
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // ✅ Fix typo here
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY; 
 
 router.post("/", async (req, res) => {
   const { query, language } = req.body;
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
       {
         contents: [{ parts: [{ text: `Respond in ${selectedLanguage}: ${query}` }] }],
-        generationConfig: { maxOutputTokens: 50 }, // Limits response length
+        generationConfig: { maxOutputTokens: 50 }, 
       },
       { headers: { "Content-Type": "application/json" } }
     );

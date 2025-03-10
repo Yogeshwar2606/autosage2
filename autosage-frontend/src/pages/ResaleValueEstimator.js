@@ -111,8 +111,8 @@ const ResaleValueEstimator = () => {
                 legend: { labels: { color: "black", font: { size: 14 } } },
               },
               scales: {
-                x: { ticks: { color: "blue", font: { size: 14 } } }, // X-axis labels color
-                y: { ticks: { color: "green", font: { size: 14 } } }, // Y-axis labels color
+                x: { ticks: { color: "blue", font: { size: 14 } } }, 
+                y: { ticks: { color: "green", font: { size: 14 } } }, 
               },
             }}
           />

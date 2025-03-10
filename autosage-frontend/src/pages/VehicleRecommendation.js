@@ -85,7 +85,7 @@ const VehicleRecommendation = () => {
         </Form>
       </Card>
 
-      {/* 📌 Display Recommended Vehicles */}
+      
       {recommendedVehicles.length > 0 && (
         <div className="mt-4">
           <h3>🔥 Top Recommendations</h3>

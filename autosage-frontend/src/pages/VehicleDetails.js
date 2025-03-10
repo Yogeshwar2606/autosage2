@@ -60,7 +60,7 @@ background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgb
           <p><strong>Features:</strong> {vehicle.features.join(", ")}</p>
           <p><strong>Launch Year:</strong> {vehicle.launchYear}</p>
 
-          {/* ✅ EMI Calculator Button */}
+          
           <Link to={`/emi-calculator?price=${vehicle.price}`}>
               <Button variant="success" className="mt-3 me-2"><HandCoins /> Calculate EMI</Button>
           </Link>
@@ -70,7 +70,7 @@ background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(85,85,181,1) 0%, rgb
         </Col>
       </Row>
 
-      {/* ✅ Reviews Section */}
+      
       <Reviews vehicleId={id} />  
     </Container>
   );

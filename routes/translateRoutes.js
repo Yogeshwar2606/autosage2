@@ -3,7 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 const router = express.Router();
-const TRANSLATE_API_KEY = process.env.GOOGLE_TRANSLATE_API_KEY; // Make sure this is set in your .env
+const TRANSLATE_API_KEY = process.env.GOOGLE_TRANSLATE_API_KEY; 
 
 // Translation API Route
 router.post("/translate", async (req, res) => {

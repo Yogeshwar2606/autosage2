@@ -11,12 +11,12 @@ import ResaleValueEstimator from "./pages/ResaleValueEstimator";
 import BankLoans from "./pages/BankLoans";
 import VehicleRecommendation from "./pages/VehicleRecommendation";
 function App() {
-  // ✅ Add state to store selected vehicles
+  
   const [selectedVehicles, setSelectedVehicles] = useState([]);
 
   return (
     <Router>
-      <NavigationBar /> {/* ✅ Navbar */}
+      <NavigationBar /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route 

@@ -9,17 +9,17 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const EMICalculator = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const vehiclePrice = queryParams.get("price") || ""; // Get price from URL
+  const vehiclePrice = queryParams.get("price") || ""; 
 
   const [price, setPrice] = useState(vehiclePrice);
   const [downPayment, setDownPayment] = useState("");
   const [loanTerm, setLoanTerm] = useState("");
-  const [interestRate, setInterestRate] = useState(8.5); // Default 8.5% interest
+  const [interestRate, setInterestRate] = useState(8.5); 
   const [emi, setEMI] = useState(null);
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    setPrice(vehiclePrice); // Auto-fill price when component mounts
+    setPrice(vehiclePrice); 
   }, [vehiclePrice]);
 
   const calculateEMI = () => {
@@ -37,7 +37,7 @@ const EMICalculator = () => {
 
     setEMI(emiValue.toFixed(2));
 
-    // 📊 Pie Chart Data
+    
     setChartData({
       labels: ["Principal", "Total Interest"],
       datasets: [

@@ -26,8 +26,8 @@ const Reviews = ({ vehicleId }) => {
         rating,
         comment,
       });
-      setReviews([res.data, ...reviews]); // Update UI instantly
-      setComment(""); // Reset input field
+      setReviews([res.data, ...reviews]); 
+      setComment(""); 
     } catch (error) {
       console.error("Error submitting review:", error);
     }
